@@ -1,0 +1,57 @@
+<div class="spinner-border text-info cargando" style="width: 6rem; height: 6rem;" role="status" *ngIf="!cargando">
+    <span class="sr-only">Loading...</span>
+</div>
+
+<div class="container mt-5 fadeIn fast" *ngIf="cargando">
+
+    <button class="btn btn-primary " (click)="regresarEncontrado()"> Regresar </button>
+    <br>
+    <h1>Perro Encontrado <small>(Información)</small></h1>
+
+    <hr>
+    <div *ngFor="let perro of perroBuscado;let i=index; ">
+        <div class="text-center">
+
+            <img src="{{perro.imgUrl}} " class="tamanoImagen">
+        </div>
+        <hr>
+
+        <div class="row animated fadeIn ">
+
+            <div class="col-sm ">
+                <ul class=" list-group list-group-flush ">
+                    <p class="list-group-item">{{perro.descripcion}}</p>
+                    <li class=" list-group-item "><strong> Fecha Visto: </strong> {{perro.fechaVisto}} </li>
+                    <li class=" list-group-item "><strong> Raza: </strong> {{perro.raza}} </li>
+                    <li class=" list-group-item "><strong> Color Dominante:</strong> {{perro.colorDominante}} </li>
+                    <li class=" list-group-item "><strong> Color Secundario:</strong> {{perro.colorSecundario}} </li>
+                    <li class=" list-group-item "><strong> Sexo:  </strong> {{perro.sexo}} </li>
+                    <li class=" list-group-item "><strong> Pelaje: </strong> {{perro.pelaje}} </li>
+                    <li class=" list-group-item "><strong> Tamaño:</strong> {{perro.tamano}} </li>
+                    <hr>
+                </ul>
+            </div>
+            <div class="col-sm ">
+                <h1>Ubicación <small>(datos)</small></h1>
+                <ul class="list-group list-group-flush ">
+                    <li class=" list-group-item "><strong> Barrio: </strong> {{perro.barrio}} </li>
+                    <li class=" list-group-item "><strong> Comuna: </strong> {{perro.comuna}} </li>
+                    <li class=" list-group-item "><strong> Dirección: </strong> {{perro.dirre}} </li>
+                    <hr>
+                </ul>
+                <div class="col-sm ">
+                    <h1>Datos Contacto <small>(datos)</small></h1>
+                    <hr>
+                    <ul class="list-group list-group-flush ">
+                        <li class=" list-group-item "><strong> Correo Contacto: </strong> {{perro.correoContacto}} </li>
+                        <li class=" list-group-item "><strong> Nombre Contacto: </strong> {{perro.nombreContacto}} </li>
+                        <li class=" list-group-item "><strong> Numero Contacto: </strong> {{perro.numeroContacto}} </li>
+                        <li class=" list-group-item "><strong> Numero Alterno:  </strong> {{perro.numeroAlterno}} </li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>

@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "alanpets-df17b": {
+      "hosting": {
+        "mi-web": [
+          "alanpets-df17b"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "rescatadoss-93e9f"
+  }
+}

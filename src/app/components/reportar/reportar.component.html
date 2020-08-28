@@ -1,0 +1,9 @@
+<div class="spinner-border text-info cargando" style="width: 6rem; height: 6rem;" role="status" *ngIf="!cargando">
+    <span class="sr-only">Loading...</span>
+</div>
+<div class="container mt-5 fadeIn fast" *ngIf="cargando">
+    <label>Tu mascota se encuentra perdida?</label>
+    <button class="btn btn-primary btn-block" routerLink="reportarPerdido">Reportar Mascota Perdida</button>
+    <label>Encontraste una mascota y no sabes quien es el dueño?</label>
+    <button class="btn btn-primary btn-block" routerLink="reportarEncontrado">Reportar Mascota Encontrada</button>
+</div>

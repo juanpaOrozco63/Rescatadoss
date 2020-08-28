@@ -1,0 +1,64 @@
+<div *ngIf="usuario && !cargando; else showRegistro">
+</div>
+<ng-template #showRegistro>
+    <div *ngIf="cargando">
+        <div class="spinner-border text-info cargando" style="width: 6rem; height: 6rem;" role="status">
+        </div>
+    </div>
+    <div class="container mt-5" *ngIf="!cargando">
+
+        <h1 class="text-center">RESCATADOSS</h1>
+        <hr>
+        <div class="text-center">
+
+            <img src="assets/img/logo.jpeg" style="width: 350px; height: 350px;" class="img-fluid">
+        </div>
+        <hr>
+        <form autocomplete="off" [formGroup]="formularioRegistro" (ngSubmit)="registrar()">
+            <div class="form-group row">
+                <label class="col-2 col-form-label">Correo</label>
+                <div class="col-8">
+
+                    <input class="form-control" type="email" placeholder="Correo electrónico" formControlName="correo" [class.is-invalid]="correoNoValido" [(ngModel)]="registro.correo">
+                    <small *ngIf="correoNoValido" class="text-danger">Ingrese un correo valido</small>
+
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-2 col-form-label">Contraseña</label>
+                <div class="col-8">
+                    <input class="form-control" type="password" placeholder="Contraseña" formControlName="password" [class.is-invalid]="passwordNoValido" [(ngModel)]="registro.password">
+                    <small *ngIf="passwordNoValido" class="text-danger">Ingrese una contraseña valida</small>
+
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-2 col-form-label">Confirmar Contraseña</label>
+                <div class="col-8">
+                    <input class="form-control" type="password" placeholder="Contraseña" formControlName="passwordRepetir" [class.is-invalid]="passwordNoValido" [(ngModel)]="registro.passwordRepetir">
+                    <small *ngIf="passwordNoValido" class="text-danger">Contraseñas no coinciden</small>
+
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-2 col-form-label">&nbsp;</label>
+                <div class="input-group col-md-8">
+                    <button type="submit" class="btn btn-outline-primary btn-block">
+                        Registrar
+                    </button>
+                </div>
+
+            </div>
+            <div class="form-group row">
+                <label class="col">&nbsp;</label>
+                <div class="input-group col-md-10">
+                    <p>Ya estas registrado?/ Ingresa <a routerLink="/login" class="badge badge-primary">Aqui</a></p>
+                </div>
+
+            </div>
+
+
+        </form>
+    </div>
+</ng-template>

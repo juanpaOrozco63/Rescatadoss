@@ -1,0 +1,42 @@
+<div class="spinner-border text-info cargando" style="width: 6rem; height: 6rem;" role="status" *ngIf="!cargando">
+    <span class="sr-only">Loading...</span>
+</div>
+
+<body>
+
+
+    <div class="container mt-5 fadeIn fast" *ngIf="cargando">
+        <h1 class="text-center">Bienvenidos a RESCATADOSS</h1>
+        <hr>
+        <div class="text-center">
+            <img src="assets/img/logo.jpeg" style="width: 350px; height: 350px;">
+        </div>
+        <hr>
+        <!-- <h3 class="text-center">(Rescatamos y recuperamos animales en estado de abandono con el fin de ubicarlos)</h3> -->
+        <p class="text-center">
+            Este es un periódico único y exclusivo de mascotas en donde podrás publicar toda la información necesaria para así poder reportar los peluditos que se encuentren perdidos o que incluso te hayas encontrado, es con el fin de poder ubicar a su familia y
+            lograr que vuelvan a casa.
+        </p>
+        <p class="text-center">
+            Aquí también podrás encontrar mascotas que se encuentran actualmente en adopción.
+        </p>
+        <p class="text-center">
+            Rescatamos y recuperamos animales en estado de abandono con el fin de ubicarlos.
+        </p>
+        <h5 class="text-center text-dark text-uppercase">Organización sin fines de lucro</h5>
+        <h4 class="text-center "> <i class="fas fa-dog"></i> Todas las donaciones son bienvenidas <i class="fas fa-cat"></i></h4>
+        <br>
+        <div class="text-center">
+            <p class="text-danger" [hidden]='!comenzarBtn'>
+                Presiona en comenzar para poder habilitar la barra de navegación superior y disponer de todos los servicios de la página!
+            </p>
+            <button class="btn btn-success" (click)="comenzar()" [hidden]='!comenzarBtn'>Comenzar</button>
+        </div>
+        <br>
+        <div class="text-center">
+            <!-- <button class="btn btn-success text-center" routerLink="/home">Comenzar</button> -->
+        </div>
+    </div>
+
+    <hr>
+</body>

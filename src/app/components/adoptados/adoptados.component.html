@@ -1,0 +1,23 @@
+<div class="spinner-border text-info cargando" style="width: 6rem; height: 6rem;" role="status" *ngIf="!cargando">
+    <span class="sr-only">Loading...</span>
+</div>
+
+<div class="container mt-5" *ngIf="cargando">
+    <h1>Mascotas Adoptadas <small>(Información)</small></h1>
+    <hr>
+    <div class=" card-columns m-3 animated fadeIn ">
+        <div class="card" style="max-width: 18rem;" *ngFor="let perro of perros;let i=index; ">
+            <img src="{{perro.imgUrl}}" class="card-img-top " alt="... ">
+            <div class="card-body">
+                <h5 class="card-title">{{perro.nombre}}</h5>
+                <p class="card-text ">{{perro.descripcion}}</p>
+                <ul class="list-group list-group-flush">
+                    <li class=" list-group-item  "><strong>Tamaño: </strong> {{perro.tamano}} </li>
+                    <li class=" list-group-item  "><strong> Sexo: </strong> {{perro.sexo}} </li>
+                </ul>
+                <br>
+                <button class="btn btn-outline-info btn-block" (click)="buscarPerro2(perro.nombre)"> Ver más...</button>
+            </div>
+        </div>
+    </div>
+</div>

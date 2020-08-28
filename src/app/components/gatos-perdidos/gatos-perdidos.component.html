@@ -1,0 +1,35 @@
+<div class="spinner-border text-info cargando" style="width: 6rem; height: 6rem;" role="status" *ngIf="!cargando">
+    <span class="sr-only">Loading...</span>
+</div>
+
+<div class="container mt-5" *ngIf="cargando">
+    <h1>Gatos Perdidos <small>(Información)</small></h1>
+    <hr>
+    <!-- <div class="form-group row">
+        <button class="btn btn-primary" (click)="buscarGato()">
+            <i class="fas fa-search"></i> Buscar</button>
+        <div class="col">
+            <input class="form-control" type="text" placeholder="Buscar por nombre" [(ngModel)]="buscar" (keyup.enter)="buscarGato()">
+        </div>
+    </div>
+    <div class="alert alert-danger" role="alert" *ngIf="validar">
+        Ingresa el nombre de tu mascota a buscar
+    </div>
+    <hr> -->
+    <div class=" card-columns m-3 animated fadeIn ">
+        <div class="card" style="max-width: 18rem;" *ngFor="let gato of gatos;let i=index; ">
+            <img src="{{gato.imgUrl}}" class="card-img-top " alt="... ">
+            <div class="card-body">
+                <h5 class="card-title">{{gato.nombre}}</h5>
+                <p class="card-text ">{{gato.descripcion}}</p>
+                <ul class="list-group list-group-flush">
+                    <li class=" list-group-item  "><strong>Fecha Extraviado: </strong> {{gato.fechaExtraviado}} </li>
+                    <li class=" list-group-item  "><strong>Raza:</strong> {{gato.raza}} </li>
+                </ul>
+                <br>
+                <button class="btn btn-outline-info btn-block" (click)="buscarGato2(gato.nombre)"> Ver más...</button>
+            </div>
+
+        </div>
+    </div>
+</div>

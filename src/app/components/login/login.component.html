@@ -1,0 +1,59 @@
+<div *ngIf="usuario && !cargando; else showLogin">
+
+</div>
+<ng-template #showLogin>
+    <div *ngIf="cargando">
+        <div class="spinner-border text-info cargando" style="width: 6rem; height: 6rem;" role="status">
+        </div>
+    </div>
+
+    <div class="container mt-5 " *ngIf="!cargando">
+        <h1 class="text-center">RESCATADOSS</h1>
+        <hr>
+        <div class="text-center">
+
+            <img src="assets/img/logo.jpeg" style="width: 350px; height: 350px;" class="img-fluid">
+        </div>
+        <hr>
+        <form autocomplete="off" [formGroup]="formularioLogin" (ngSubmit)="login()">
+            <div class="form-group row">
+                <label class="col-2 col-form-label">Correo</label>
+                <div class="col-8">
+
+                    <input class="form-control" type="email" placeholder="Correo electrónico" formControlName="correo" [class.is-invalid]="correoNoValido">
+                    <small *ngIf="correoNoValido" class="text-danger">Ingrese un correo valido</small>
+
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-2 col-form-label">Contraseña</label>
+                <div class="col-8">
+                    <input class="form-control" type="password" placeholder="Contraseña" formControlName="password" [class.is-invalid]="passwordNoValido">
+                    <small *ngIf="passwordNoValido" class="text-danger">Ingrese una contraseña valida</small>
+                    <small *ngIf="olvido" class="text-danger"><p>Olvidaste tú contraseña pulsa <a routerLink="/recuperar" class="badge badge-danger">Aqui</a></p></small>
+
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-2 col-form-label">&nbsp;</label>
+                <div class="input-group col-md-8">
+                    <button type="submit" class="btn btn-outline-success btn-block">
+                        Ingresar
+                    </button>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col">&nbsp;</label>
+
+                <div class="input-group col-md-10">
+                    <p>No estas registrado?/ Registrate <a routerLink="/registro" class="badge badge-success">Aqui</a></p>
+                </div>
+
+            </div>
+
+
+        </form>
+    </div>
+
+</ng-template>

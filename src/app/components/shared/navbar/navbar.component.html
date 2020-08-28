@@ -1,0 +1,64 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">
+        <i class="fas fa-paw fa"></i>RESCATADOSS
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item" routerLinkActive="active">
+                <a class="nav-link" href="#" routerLink="perfil" *ngIf="valoracionNavbarNormal || valoracionNavbarAdmin">Mi Perfil <span class="sr-only ">(current)</span></a>
+            </li>
+            <li class="nav-item" routerLinkActive="active">
+                <a class="nav-link" href="#" routerLink="adopciones" *ngIf="valoracionNavbarNormal || valoracionNavbarAdmin"> Adopción <span class="sr-only ">(current)</span></a>
+            </li>
+            <li class="nav-item" routerLinkActive="active">
+                <a class="nav-link" href="#" routerLink="adoptados" *ngIf="valoracionNavbarNormal || valoracionNavbarAdmin"> Adoptados <span class="sr-only ">(current)</span></a>
+            </li>
+            <li class="nav-item dropdown" routerLinkActive="active">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" *ngIf="valoracionNavbarNormal || valoracionNavbarAdmin">
+                        Encontrados
+                    </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="#" routerLink="perrosEncontrados">
+                        <i class="fas fa-dog"></i> Perros</a>
+                    <a class="dropdown-item" href="#" routerLink="gatosEncontrados">
+                        <i class="fas fa-cat"></i> Gatos</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown" routerLinkActive="active">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" *ngIf="valoracionNavbarNormal || valoracionNavbarAdmin">
+                                Perdidos
+                            </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" *ngIf="valoracionNavbarNormal || valoracionNavbarAdmin">
+                    <a class="dropdown-item" href="#" routerLink="perrosPerdidos">
+                        <i class="fas fa-dog"></i> Perros</a>
+                    <a class="dropdown-item" href="#" routerLink="gatosPerdidos">
+                        <i class="fas fa-cat"></i> Gatos</a>
+                </div>
+            </li>
+            <li class="nav-item" routerLinkActive="active">
+                <a class="nav-link" href="#" routerLink="reportar" *ngIf="valoracionNavbarNormal || valoracionNavbarAdmin"> Reportar <span class="sr-only ">(current)</span></a>
+            </li>
+            <li class="nav-item" routerLinkActive="active">
+                <a class="nav-link" href="#" routerLink="reportarAdmin" *ngIf="valoracionNavbarAdmin "> Admin <span class="sr-only ">(current)</span></a>
+            </li>
+            <li class="nav-item" routerLinkActive="active">
+                <a class="nav-link" href="#" routerLink="formularios" *ngIf="valoracionNavbarAdmin "> Formularios <span class="sr-only ">(current)</span></a>
+            </li>
+
+            <li class="nav-item" routerLinkActive="active">
+                <a class="nav-link" href="#" routerLink="nosotros"> Nosotros <span class="sr-only ">(current)</span></a>
+            </li>
+        </ul>
+
+        <form class="form-inline my-2 my-lg-0">
+
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit" *ngIf="!valoracion" routerLink="login">Log in</button>
+            <button class="btn btn-outline-danger my-2 my-sm-0" type="submit" *ngIf="valoracion" (click)="logout()">Log Out</button>
+        </form>
+    </div>
+
+</nav>

@@ -1,0 +1,217 @@
+<div class="spinner-border text-info cargando" style="width: 6rem; height: 6rem;" role="status" *ngIf="!cargando">
+    <span class="sr-only">Loading...</span>
+</div>
+<div class="container mt-5 fadeIn fast" *ngIf="cargando">
+    <h1>Perros Perdidos <small>(Información)</small></h1>
+
+    <hr>
+    <div *ngFor="let perro of perrosPerdidos;let i=index; ">
+        <div class="text-center">
+
+            <img src="{{perro.imgUrl}} " class="tamanoImagen ">
+        </div>
+        <hr>
+
+        <div class="row animated  ">
+
+            <div class="col-sm ">
+                <h1><small></small>{{perro.nombre}} <small>(datos)</small></h1>
+                <ul class=" list-group list-group-flush ">
+                    <p class="list-group-item"> {{perro.descripcion}}</p>
+                    <li class=" list-group-item "><strong> Fecha Extraviado:  </strong> {{perro.fechaExtraviado}} </li>
+                    <li class=" list-group-item "><strong> Raza: </strong> {{perro.raza}} </li>
+                    <li class=" list-group-item "><strong> Color Dominante: </strong> {{perro.colorDominante}} </li>
+                    <li class=" list-group-item "><strong> Color Secundario: </strong> {{perro.colorSecundario}} </li>
+                    <li class=" list-group-item "><strong> Edad (años):   </strong>{{perro.edad}} </li>
+                    <li class=" list-group-item "><strong> Edad (meses):   </strong>{{perro.meses}} </li>
+                    <li class=" list-group-item "><strong> Sexo:  </strong> {{perro.sexo}} </li>
+                    <li class=" list-group-item "><strong> Pelaje: </strong> {{perro.pelaje}} </li>
+                    <li class=" list-group-item "><strong> Tamaño: </strong> {{perro.tamano}} </li>
+                    <li class=" list-group-item "><strong> Esterilizacion:</strong> {{perro.esterilizacion}} </li>
+                    <hr>
+                </ul>
+            </div>
+            <div class="col-sm ">
+                <h1>Ubicación <small>(datos)</small></h1>
+                <ul class="list-group list-group-flush ">
+                    <li class=" list-group-item "><strong> Barrio: </strong> {{perro.barrio}} </li>
+                    <li class=" list-group-item "><strong> Comuna: </strong> {{perro.comuna}} </li>
+                    <li class=" list-group-item "><strong> Dirección: </strong> {{perro.dirre}} </li>
+                    <hr>
+                </ul>
+                <div class="col-sm ">
+                    <h1>Datos Contacto <small>(datos)</small></h1>
+                    <hr>
+                    <ul class="list-group list-group-flush ">
+                        <li class=" list-group-item "><strong> Correo Contacto: </strong> {{perro.correoContacto}} </li>
+                        <li class=" list-group-item "><strong> Nombre Contacto: </strong> {{perro.nombreContacto}} </li>
+                        <li class=" list-group-item "><strong> Numero Contacto: </strong> {{perro.numeroContacto}} </li>
+                        <li class=" list-group-item "><strong> Numero Alterno:  </strong> {{perro.numeroAlterno}} </li>
+                        <li class=" list-group-item btn "><button class="btn-danger btn-block " (click)="eliminarPerroPerdido()">Eliminar publicación</button> </li>
+
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+
+    </div>
+    <h1>Gatos Perdidos <small>(Información)</small></h1>
+    <hr>
+    <div *ngFor="let gato of gatosPerdidos;let i=index; ">
+        <div class="text-center">
+
+            <img src="{{gato.imgUrl}} " class="tamanoImagen ">
+        </div>
+        <hr>
+        <div class="row animated fadeIn ">
+
+            <div class="col-sm ">
+                <h1><small></small>{{gato.nombre}} <small>(datos)</small></h1>
+                <ul class=" list-group list-group-flush ">
+                    <p class="list-group-item"> {{gato.descripcion}}</p>
+                    <li class=" list-group-item "><strong>Fecha Extraviado:</strong> {{gato.fechaExtraviado}} </li>
+                    <li class=" list-group-item "><strong> Raza:</strong> {{gato.raza}} </li>
+                    <li class=" list-group-item "><strong> Color Dominante:</strong> {{gato.colorDominante}} </li>
+                    <li class=" list-group-item "><strong>Color Secundario:</strong> {{gato.colorSecundario}} </li>
+                    <li class=" list-group-item "><strong> Edad (años) :</strong> {{gato.edad}} </li>
+                    <li class=" list-group-item "><strong> Edad (meses) :</strong> {{gato.meses}} </li>
+                    <li class=" list-group-item "><strong>Sexo:</strong> {{gato.sexo}} </li>
+                    <li class=" list-group-item "><strong>Pelaje:</strong> {{gato.pelaje}} </li>
+                    <li class=" list-group-item "><strong>Tamaño:</strong> {{gato.tamano}} </li>
+                    <li class=" list-group-item "><strong>Esterilizacion:</strong> {{gato.esterilizacion}} </li>
+                    <hr>
+                </ul>
+            </div>
+            <div class="col-sm ">
+                <h1>Ubicación <small>(datos)</small></h1>
+                <ul class="list-group list-group-flush ">
+                    <li class=" list-group-item "><strong> Barrio: </strong> {{gato.barrio}} </li>
+                    <li class=" list-group-item "><strong> Comuna: </strong> {{gato.comuna}} </li>
+                    <li class=" list-group-item "><strong> Dirección: </strong> {{gato.dirre}} </li>
+                    <hr>
+                </ul>
+                <div class="col-sm ">
+                    <h1>Datos Contacto <small>(datos)</small></h1>
+                    <hr>
+                    <ul class="list-group list-group-flush ">
+                        <li class=" list-group-item "><strong> Correo Contacto: </strong> {{gato.correoContacto}} </li>
+                        <li class=" list-group-item "><strong> Nombre Contacto: </strong> {{gato.nombreContacto}} </li>
+                        <li class=" list-group-item "><strong> Numero Contacto: </strong> {{gato.numeroContacto}} </li>
+                        <li class=" list-group-item "><strong> Numero Alterno:  </strong> {{gato.numeroAlterno}} </li>
+                        <li class=" list-group-item btn "><button class="btn-danger btn-block" (click)="eliminarGatoPerdido()">Eliminar publicación</button> </li>
+
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <h1>Perros Encontrados <small>(Información)</small></h1>
+    <hr>
+    <div *ngFor="let perro of perrosEncontrados;let i=index; ">
+        <div class="text-center">
+
+            <img src="{{perro.imgUrl}} " class="tamanoImagen ">
+        </div>
+        <hr>
+
+        <div class="row animated fadeIn ">
+
+            <div class="col-sm ">
+                <ul class=" list-group list-group-flush ">
+                    <p class="list-group-item"> {{perro.descripcion}}</p>
+                    <li class=" list-group-item "><strong> Fecha Visto:</strong> {{perro.fechaVisto}} </li>
+                    <li class=" list-group-item "><strong> Raza: </strong> {{perro.raza}} </li>
+                    <li class=" list-group-item "><strong> Color Dominante:  </strong> {{perro.colorDominante}} </li>
+                    <li class=" list-group-item "><strong> Color Secundario: </strong> {{perro.colorSecundario}} </li>
+                    <li class=" list-group-item "><strong> Sexo: </strong> {{perro.sexo}} </li>
+                    <li class=" list-group-item "><strong> Pelaje:  </strong>{{perro.pelaje}} </li>
+                    <li class=" list-group-item "><strong> Tamaño:  </strong> {{perro.tamano}} </li>
+                    <hr>
+                </ul>
+            </div>
+            <div class="col-sm ">
+                <h1>Ubicación <small>(datos)</small></h1>
+                <ul class="list-group list-group-flush ">
+                    <li class=" list-group-item "><strong> Barrio: </strong> {{perro.barrio}} </li>
+                    <li class=" list-group-item "><strong> Comuna: </strong> {{perro.comuna}} </li>
+                    <li class=" list-group-item "><strong> Dirección: </strong> {{perro.dirre}} </li>
+                    <hr>
+                </ul>
+                <div class="col-sm ">
+                    <h1>Datos Contacto <small>(datos)</small></h1>
+                    <hr>
+                    <ul class="list-group list-group-flush ">
+                        <li class=" list-group-item "><strong> Correo Contacto: </strong> {{perro.correoContacto}} </li>
+                        <li class=" list-group-item "><strong> Nombre Contacto: </strong> {{perro.nombreContacto}} </li>
+                        <li class=" list-group-item "><strong> Numero Contacto: </strong> {{perro.numeroContacto}} </li>
+                        <li class=" list-group-item "><strong> Numero Alterno:  </strong> {{perro.numeroAlterno}} </li>
+                        <li class=" list-group-item btn "><button class="btn-danger btn-block" (click)="eliminarPerrosEncontrados()">Eliminar publicación</button> </li>
+
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <h1>Gatos Encontrado <small>(Información)</small></h1>
+    <hr>
+    <div *ngFor="let gato of gatosEncontrados;let i=index; ">
+        <div class="text-center">
+
+            <img src="{{gato.imgUrl}} " class="tamanoImagen ">
+        </div>
+        <hr>
+
+        <div class="row animated fadeIn ">
+
+            <div class="col-sm ">
+                <ul class=" list-group list-group-flush ">
+                    <p class="list-group-item"> {{gato.descripcion}}</p>
+                    <li class=" list-group-item "><strong> Fecha Visto: </strong> {{gato.fechaVisto}} </li>
+                    <li class=" list-group-item "><strong> Raza: </strong> {{gato.raza}} </li>
+                    <li class=" list-group-item "><strong> Color Dominante: </strong> {{gato.colorDominante}} </li>
+                    <li class=" list-group-item "><strong> Color Secundario: </strong> {{gato.colorSecundario}} </li>
+                    <li class=" list-group-item "><strong> Sexo:</strong> {{gato.sexo}} </li>
+                    <li class=" list-group-item "><strong> Pelaje: </strong> {{gato.pelaje}} </li>
+                    <li class=" list-group-item "><strong> Tamaño:  </strong> {{gato.tamano}} </li>
+                    <hr>
+                </ul>
+            </div>
+            <div class="col-sm ">
+                <h1>Ubicación <small>(datos)</small></h1>
+                <ul class="list-group list-group-flush ">
+                    <li class=" list-group-item "><strong> Barrio: </strong> {{gato.barrio}} </li>
+                    <li class=" list-group-item "><strong> Comuna: </strong> {{gato.comuna}} </li>
+                    <li class=" list-group-item "><strong> Dirección: </strong> {{gato.dirre}} </li>
+                    <hr>
+                </ul>
+                <div class="col-sm ">
+                    <h1>Datos Contacto <small>(datos)</small></h1>
+                    <hr>
+                    <ul class="list-group list-group-flush ">
+                        <li class=" list-group-item "><strong> Correo Contacto: </strong> {{gato.correoContacto}} </li>
+                        <li class=" list-group-item "><strong> Nombre Contacto: </strong> {{gato.nombreContacto}} </li>
+                        <li class=" list-group-item "><strong> Numero Contacto: </strong> {{gato.numeroContacto}} </li>
+                        <li class=" list-group-item "><strong> Numero Alterno:  </strong> {{gato.numeroAlterno}} </li>
+                        <li class=" list-group-item btn "><button class="btn-danger btn-block" (click)="eliminarGatosEncontrados()">Eliminar publicación</button> </li>
+
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>

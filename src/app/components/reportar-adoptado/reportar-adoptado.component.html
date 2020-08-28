@@ -1,0 +1,132 @@
+<div class="spinner-border text-info cargando" style="width: 6rem; height: 6rem;" role="status" *ngIf="!cargando">
+    <span class="sr-only">Loading...</span>
+</div>
+<div class="container mt-5 fadeIn fast" *ngIf="cargando">
+
+    <h4>Mascota Adoptada <small>(Datos)</small></h4>
+    <hr>
+    <form autocomplete="off" [formGroup]="formulario" (ngSubmit)="guardar()">
+
+        <div>
+            <div class="form-group row">
+                <label class="col-2 col-form-label">Nombre*</label>
+                <div class="col-8">
+
+                    <input class="form-control" type="text" placeholder="Nombre" formControlName='nombre' [class.is-invalid]="nombreNoValido" [(ngModel)]="reportarAdopcion.nombre">
+                    <small *ngIf="nombreNoValido" class="text-danger">Ingrese minimo 3 caracteres</small>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-2 col-form-label">Mascota*</label>
+                <div class="col-8">
+                    <select name="" class="custom-select" formControlName="mascota" [(ngModel)]='reportarAdopcion.mascota' [class.is-invalid]="mascotaNoValido">
+                            <option value="Perro">Perro</option>
+                            <option value="Gato">Gato</option>
+                        </select>
+                    <small *ngIf="mascotaNoValido" class="text-danger">Seleccione una mascota valida</small>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-2 col-form-label">Raza*</label>
+                <div class="col-8">
+
+                    <input class="form-control" type="text" placeholder="Raza" formControlName='raza' [class.is-invalid]="razaNoValido" [(ngModel)]="reportarAdopcion.raza">
+                    <small *ngIf="razaNoValido" class="text-danger">Ingrese minimo 3 caracteres</small>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-2 col-form-label">Edad</label>
+                <div class="col-8">
+
+                    <input class="form-control" type="number" placeholder="Edad" formControlName="edad" [(ngModel)]="reportarAdopcion.edad">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-2 col-form-label">Sexo*</label>
+                <div class="col-8">
+                    <select name="" class="custom-select" formControlName="sexo" [(ngModel)]="reportarAdopcion.sexo">
+                            <option value="Macho">Macho</option>
+                            <option value="Hembra">Hembra</option>
+                        </select>
+                </div>
+            </div>
+
+
+            <div class="form-group row">
+                <label class="col-2 col-form-label">Color Dominante*</label>
+                <div class="col-8">
+
+                    <input class="form-control" type="text" placeholder="Color Dominante" formControlName="colorDominante" [class.is-invalid]="colorDominanteNoValido" [(ngModel)]="reportarAdopcion.colorDominante">
+                    <small *ngIf="colorDominanteNoValido" class="text-danger">Ingrese minimo 3 caracteres</small>
+                </div>
+            </div>
+            <div class=" form-group row ">
+                <label class="col-2 col-form-label ">Color Secundario</label>
+                <div class="col-8 ">
+
+                    <input class="form-control " type="text " placeholder="Color Secundario" formControlName="colorSecundario" [(ngModel)]="reportarAdopcion.colorSecundario">
+                    <small *ngIf="colorSecundarioNoValido" class="text-danger">Ingrese minimo 3 caracteres</small>
+
+                </div>
+            </div>
+            <div class="form-group row ">
+                <label class="col-2 col-form-label ">Tamaño*</label>
+                <div class="col-8 ">
+                    <select name="" class="custom-select" formControlName="tamano">
+                            <option value="Pequeño">Pequeño</option>
+                            <option value="Mediano">Mediano</option>
+                            <option value="Grande">Grande</option>
+                        </select>
+                </div>
+            </div>
+            <div class="form-group row ">
+                <label class="col-2 col-form-label ">Pelaje*</label>
+                <div class="col-8 ">
+                    <select name="" class="custom-select" formControlName="pelaje">
+                            <option value="Corto">Corto</option>
+                            <option value="Largo">Largo</option>
+                        </select>
+                </div>
+            </div>
+            <div class="form-group row ">
+                <label class="col-2 col-form-label ">Esterilización*</label>
+                <div class="col-8 ">
+                    <select name="" class="custom-select" formControlName="esterilizacion">
+                            <option value="Si">Si</option>
+                            <option value="No">No</option>
+                        </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-2 col-form-label">Descripción</label>
+                <div class="col-8">
+                    <textarea class="form-control" maxlength="60" rows="3" placeholder="Caracteristicas/Rasgos que permitan diferenciar a tu mascota" formControlName="descripcion" [(ngModel)]="reportarAdopcion.descripcion"></textarea>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-2 col-form-label">Imagen</label>
+                <div class="col-8">
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" formControlName="imgUrl" (change)="agregarImagen($event)" [class.is-invalid]="imagenNoValido">
+                        <label class="custom-file-label">Agregar Imagen</label>
+                        <small *ngIf="imagenNoValido" class="text-danger">Ingrese una imagen</small>
+
+                    </div>
+                    <div class="text-center">
+                        <label *ngIf="porcentajeSubida<100">Cargando...</label>
+                    </div>
+                    <progressbar [value]="porcentajeSubida" [striped]="true" [animate]="true">{{porcentajeSubida}}%</progressbar>
+                </div>
+            </div>
+            <div class="form-group row ">
+                <label class="col-2 col-form-label ">&nbsp;</label>
+                <div class="input-group col-md-8 ">
+                    <button type="submit " class="btn btn-primary btn-block ">
+                            <i class="far fa-save"></i> Guardar
+                        </button>
+                </div>
+            </div>
+        </div>
+
+    </form>
+</div>

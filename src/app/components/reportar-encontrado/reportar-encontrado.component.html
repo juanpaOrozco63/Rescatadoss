@@ -1,0 +1,174 @@
+<div class="spinner-border text-info cargando" style="width: 6rem; height: 6rem;" role="status" *ngIf="!cargando">
+    <span class="sr-only">Loading...</span>
+</div>
+<div class="container mt-5 fadeIn fast" *ngIf="cargando">
+
+    <h4>Mascota Encontrada <small>(Datos) </small></h4>
+    <hr>
+    <form autocomplete="off" [formGroup]="formulario" (ngSubmit)="guardar()">
+
+        <div>
+            <div class="form-group row">
+                <label class="col-2 col-form-label">Mascota</label>
+                <div class="col-8">
+                    <select name="" class="custom-select" formControlName="mascota" [(ngModel)]='reportarEncontrado.mascota' [class.is-invalid]="mascotaNoValido">
+                        <option value="Perro">Perro</option>
+                        <option value="Gato">Gato</option>
+                    </select>
+                    <small *ngIf="mascotaNoValido" class="text-danger">Seleccione una</small>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-2 col-form-label">Fecha Visto*</label>
+                <div class="col-8">
+
+                    <input class="form-control" type="date" formControlName="fechaVisto" [(ngModel)]="reportarEncontrado.fechaVisto">
+                    <small *ngIf="fechaVistoNovalido" class="text-danger">Ingrese una fecha</small>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-2 col-form-label">Raza*</label>
+                <div class="col-8">
+
+                    <input class="form-control" type="text" placeholder="Raza" formControlName='raza' [class.is-invalid]="razaNoValido" [(ngModel)]="reportarEncontrado.raza">
+                    <small *ngIf="razaNoValido" class="text-danger">Ingrese minimo 3 caracteres</small>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-2 col-form-label">Sexo</label>
+                <div class="col-8">
+                    <select name="" class="custom-select" formControlName="sexo" [(ngModel)]="reportarEncontrado.sexo">
+                        <option value="Macho">Macho</option>
+                        <option value="Hembra">Hembra</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-2 col-form-label">Color Dominante*</label>
+                <div class="col-8">
+
+                    <input class="form-control" type="text" placeholder="Color Dominante" formControlName="colorDominante" [class.is-invalid]="colorDominanteNoValido" [(ngModel)]="reportarEncontrado.colorDominante">
+                    <small *ngIf="colorDominanteNoValido" class="text-danger">Ingrese minimo 3 caracteres</small>
+                </div>
+            </div>
+            <div class=" form-group row ">
+                <label class="col-2 col-form-label ">Color Secundario</label>
+                <div class="col-8 ">
+
+                    <input class="form-control " type="text " placeholder="Color Secundario" formControlName="colorSecundario" [(ngModel)]="reportarEncontrado.colorSecundario">
+                    <small *ngIf="colorSecundarioNoValido" class="text-danger">Ingrese minimo 3 caracteres</small>
+
+                </div>
+            </div>
+            <div class="form-group row ">
+                <label class="col-2 col-form-label ">Tamaño</label>
+                <div class="col-8 ">
+                    <select name="" class="custom-select" formControlName="tamano">
+                        <option value="Pequeño">Pequeño</option>
+                        <option value="Mediano">Mediano</option>
+                        <option value="Grande">Grande</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row ">
+                <label class="col-2 col-form-label ">Pelaje</label>
+                <div class="col-8 ">
+                    <select name="" class="custom-select" formControlName="pelaje">
+                        <option value="Corto">Corto</option>
+                        <option value="Largo">Largo</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-2 col-form-label">Descripción</label>
+                <div class="col-8">
+                    <textarea class="form-control" maxlength="65" rows="3" placeholder="Caracteristicas/Rasgos que permitan diferenciarlo" formControlName="descripcion" [(ngModel)]="reportarEncontrado.descripcion"></textarea>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-2 col-form-label">Imagen</label>
+                <div class="col-8">
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" formControlName="imgUrl" (change)="agregarImagen($event)" [class.is-invalid]="imagenNoValido">
+                        <label class="custom-file-label">Agregar Imagen</label>
+                        <small *ngIf="imagenNoValido" class="text-danger">Ingrese una imagen</small>
+
+                    </div>
+                    <div class="text-center">
+                        <label *ngIf="porcentajeSubida<100">Cargando...</label>
+                    </div>
+                    <progressbar [value]="porcentajeSubida" [striped]="true" [animate]="true">{{porcentajeSubida}}%</progressbar>
+                </div>
+            </div>
+        </div>
+        <h4>Ubicación <small>(Datos)</small></h4>
+        <hr>
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Comuna Visto</label>
+            <div class="col-8">
+                <select class="form-control" formControlName="comuna" [(ngModel)]="reportarEncontrado.comuna" [class.is-invalid]="comunaNoValido">
+                    <option *ngFor="let c of comunas">{{c}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Barrio Visto*</label>
+            <div class="col-8">
+
+                <input class="form-control" type="text" formControlName="barrio" [(ngModel)]="reportarEncontrado.barrio" [class.is-invalid]="barrioNoValido">
+                <small *ngIf="barrioNoValido" class="text-danger">Ingrese minimo 3 caracteres</small>
+            </div>
+
+        </div>
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Dirección Visto</label>
+            <div class="col-8">
+                <input class="form-control" type="text" formControlName="dirre" [(ngModel)]="reportarEncontrado.dirre">
+            </div>
+
+        </div>
+        <h4>Contacto <small>(Datos)</small></h4>
+        <hr>
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Nombre De Contacto*</label>
+            <div class="col-8">
+
+                <input class="form-control" type="text" placeholder="Nombre de Contacto" formControlName="nombreContacto" [class.is-invalid]="nombreContactoNoValido" [(ngModel)]="reportarEncontrado.nombreContacto">
+                <small *ngIf="nombreContactoNoValido" class="text-danger">Ingrese minimo 3 caracteres</small>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Numero De Contacto*</label>
+            <div class="col-8">
+
+                <input class="form-control" type="number" placeholder="Numero de Contacto" formControlName="numeroContacto" [class.is-invalid]="numeroContactoNoValido" [(ngModel)]="reportarEncontrado.numeroContacto">
+                <small *ngIf="numeroContactoNoValido" class="text-danger">Ingrese un numero valido </small>
+
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Numero Alterno</label>
+            <div class="col-8">
+
+                <input class="form-control" type="number" placeholder="Numero de Contacto Alterno" formControlName="numeroAlterno" [(ngModel)]="reportarEncontrado.numeroAlterno">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Correo De Contacto*</label>
+            <div class="col-8">
+
+                <input class="form-control" type="email" placeholder="Correo De Contacto" disabled formControlName="correoContacto" [class.is-invalid]="correoNoValido" [(ngModel)]="correo">
+                <small *ngIf="correoNoValido" class="text-danger">Tienes que ingresar al sistema para poder reportar una mascota encontrada</small>
+            </div>
+        </div>
+
+        <div class="form-group row ">
+            <label class="col-2 col-form-label ">&nbsp;</label>
+            <div class="input-group col-md-8 ">
+                <button type="submit " class="btn btn-primary btn-block ">
+                    <i class="far fa-save"></i> Guardar
+                </button>
+            </div>
+        </div>
+    </form>
+</div>

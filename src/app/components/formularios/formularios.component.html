@@ -1,0 +1,17 @@
+<div class="spinner-border text-info cargando" style="width: 6rem; height: 6rem;" role="status" *ngIf="!cargando">
+    <span class="sr-only">Loading...</span>
+</div>
+<div class="container mt-5 fadeIn fast" *ngIf="cargando">
+    <h4>Formularios de adopción <small>(Datos) </small></h4>
+    <hr>
+    <div *ngFor="let formu of formularios;let i=index;" class="form-group">
+        <div class="col-md-8">
+
+            <a href="{{formu.url}}" class="form-control"> {{i + 1}}
+                <i class="fas fa-file-word"> </i> {{formu.nombre}}
+            </a>
+        </div>
+        <div class="col-md-2 mt-1">
+            <button class="btn btn-danger" (click)="eliminar()"> {{i + 1}} Eliminar</button>
+        </div>
+    </div>

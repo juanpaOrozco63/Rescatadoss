@@ -1,0 +1,10 @@
+<div class="spinner-border text-info cargando" style="width: 6rem; height: 6rem;" role="status" *ngIf="!cargando">
+    <span class="sr-only">Loading...</span>
+</div>
+<div class="container mt-5 fadeIn fast " *ngIf="cargando">
+    <div class="container mt-5 fadeIn fast">
+        <label>Publicar mascota en adopción</label>
+        <button class="btn btn-primary btn-block" routerLink="reportarAdopcion">Publicar Adopción</button>
+        <label>Publicar mascota adoptada</label>
+        <button class="btn btn-primary btn-block" routerLink="reportarAdoptado">Publicar Adoptado</button>
+    </div>

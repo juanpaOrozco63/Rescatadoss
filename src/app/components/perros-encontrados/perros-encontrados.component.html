@@ -1,0 +1,34 @@
+<div class="spinner-border text-info cargando" style="width: 6rem; height: 6rem;" role="status" *ngIf="!cargando">
+    <span class="sr-only">Loading...</span>
+</div>
+
+<div class="container mt-5 fadeIn fast" *ngIf="cargando">
+    <h1>Perros Encontrados <small>(Información)</small></h1>
+    <hr>
+    <div class="form-group row">
+        <button class="btn btn-primary" (click)="buscarPerro()">
+            <i class="fas fa-search"></i> Buscar</button>
+        <div class="col">
+            <input class="form-control" type="text" placeholder="Buscar por color dominante" [(ngModel)]="buscar" (keyup.enter)="buscarPerro()">
+        </div>
+    </div>
+    <div class="alert alert-danger" role="alert" *ngIf="validar">
+        Ingresa el color dominante de tu mascota a buscar
+    </div>
+    <hr>
+    <div class=" card-columns m-3 animated fadeIn ">
+        <div class="card" style="max-width: 18rem;" *ngFor="let perro of perros;let i=index; ">
+            <img src="{{perro.imgUrl}}" class="card-img-top " alt="... ">
+            <div class="card-body">
+                <h5 class="card-title">{{perro.nombre}}</h5>
+                <p class="card-text ">{{perro.descripcion}}</p>
+                <ul class="list-group list-group-flush">
+                    <li class=" list-group-item  "><strong>Fecha Visto: </strong> {{perro.fechaVisto}} </li>
+                    <li class=" list-group-item  "><strong>Raza: </strong> {{perro.raza}} </li>
+                </ul>
+                <br>
+                <button class="btn btn-outline-info btn-block" (click)="buscarPerro2(perro.colorDominante)"> Ver más...</button>
+            </div>
+        </div>
+    </div>
+</div>
